@@ -1,0 +1,5 @@
+/.idea
+/reports
+/target
+/.settings
+/src/main/resources/_database.properties
