@@ -1,19 +1,17 @@
 package mshantadze.cucumber.utils.db.models;
 
+import java.math.BigDecimal;
+
 public class Product {
     private long id;
     private String title;
     private String description;
-    private String price;
+    private double price;
 
     public Product() {
-        this.id = -1;
-        this.title = "";
-        this.description = "";
-        this.price = "";
     }
 
-    public Product(long id, String title, String description, String price) {
+    public Product(long id, String title, String description, double price) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -44,11 +42,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

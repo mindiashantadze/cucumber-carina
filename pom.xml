@@ -5,7 +5,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mshantadze</groupId>
-	<artifactId>cucumber-automation</artifactId>
+	<artifactId>cucumber</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>Cucumber automation</name>
