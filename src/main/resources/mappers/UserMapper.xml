@@ -2,5 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper>
-        
+    <select id="getUser" parameterType="User" resultMap="User">
+        <![CDATA[
+            SELECT u.user_id, u.login, u.password FROM Users AS u WHERE user_id = ${id}
+        ]]>
+    </select>
+
+    <resultMap id="User" type="mshantadze.cucumber.utils.db.models.User">
+        <id column="user_id" property="id" />
+        <result column="login" property="username" />
+        <result column="password" property="password" />
+    </resultMap>
 </mapper>

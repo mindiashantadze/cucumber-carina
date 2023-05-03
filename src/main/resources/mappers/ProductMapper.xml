@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+    <select id="getUserProducts" parameterType="User" resultMap="Product">
+        <![CDATA[
+            SELECT p.product_id, p.title, p.description FROM products
+                AS p INNER JOIN orders
+                AS o ON p.product_id = o.product_id
+            WHERE o.user_id = #{id}
+        ]]>
+    </select>
+    
+    <resultMap id="Product" type="mshantadze.cucumber.utils.db.models.Product">
+        <id column="product_id" property="id" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="price" property="price" />
+    </resultMap>
+</mapper>
