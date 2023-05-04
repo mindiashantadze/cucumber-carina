@@ -30,6 +30,8 @@ import java.util.Map;
 public class ECommerceTest extends AbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(ECommerceTest.class);
 
+    private static final String ORDER_SUCCESS_MESSAGE = "Thank you for your order!";
+
     @Test
     public void doSomething() {
         final User USER = UsersDAO.getUser("standard_user");
@@ -75,5 +77,7 @@ public class ECommerceTest extends AbstractTest {
         LOGGER.info("Checkout subtotal: " + checkoutPageSubtotal.toString());
 
         Assert.assertEquals(productsTotalPrice, checkoutPageSubtotal, "Checkout subtotal price is not correct");
+        checkoutPage.clickFinishBtn();
+        Assert.assertEquals(checkoutPage.getThankYouMessage(), ORDER_SUCCESS_MESSAGE, "User should get thank you message.");
     }
 }

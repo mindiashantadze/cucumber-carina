@@ -27,6 +27,12 @@ public class CheckoutPage extends AbstractPage {
     @FindBy(className = "summary_subtotal_label")
     private ExtendedWebElement lblSubtotal;
 
+    @FindBy(className = "complete-header")
+    private ExtendedWebElement lblThankYouMessage;
+
+    @FindBy(id = "finish")
+    private ExtendedWebElement btnFinish;
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
@@ -54,5 +60,13 @@ public class CheckoutPage extends AbstractPage {
     public BigDecimal getSubtotalPrice() {
         String subtotalPrice = lblSubtotal.getText().replaceAll("[^\\d.]", "");
         return new BigDecimal(subtotalPrice);
+    }
+
+    public void clickFinishBtn() {
+        this.btnFinish.click();
+    }
+
+    public String getThankYouMessage() {
+        return this.lblThankYouMessage.getText().trim();
     }
 }
