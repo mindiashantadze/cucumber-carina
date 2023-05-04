@@ -6,7 +6,7 @@ public class Product {
     private long id;
     private String title;
     private String description;
-    private double price;
+    private Double price;
 
     public Product() {
     }
@@ -46,7 +46,29 @@ public class Product {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        Product product = (Product) obj;
+        if (product.getId() == this.id && product.getTitle().equals(this.title) && product.getDescription().equals(this.description) && product.getPrice() == this.price) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

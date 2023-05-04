@@ -4,7 +4,7 @@
 <mapper namespace="mshantadze.cucumber.utils.db.mappers.UserMapper">
     <select id="getUser" parameterType="User" resultMap="User">
         <![CDATA[
-            SELECT u.user_id, u.login, u.password FROM Users AS u WHERE user_id = ${id}
+            SELECT u.user_id, u.login, u.password FROM Users AS u WHERE u.login = #{username}
         ]]>
     </select>
     <resultMap id="User" type="mshantadze.cucumber.utils.db.models.User">

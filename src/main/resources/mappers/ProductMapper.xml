@@ -4,10 +4,19 @@
 <mapper namespace="mshantadze.cucumber.utils.db.mappers.ProductMapper">
     <select id="getUserProducts" parameterType="User" resultMap="Product">
         <![CDATA[
-            SELECT p.product_id, p.title, p.description FROM products
+            SELECT p.product_id, p.title, p.description, p.price FROM products
                 AS p INNER JOIN orders
                 AS o ON p.product_id = o.product_id
             WHERE o.user_id = #{id}
+        ]]>
+    </select>
+
+    <select id="getProductsTotalPrice" parameterType="User" resultType="java.math.BigDecimal">
+        <![CDATA[
+            SELECT SUM(p.price) FROM products
+                AS p INNER JOIN orders
+                AS o ON p.product_id = o.product_id
+            WHERE o.user_id = #{id};
         ]]>
     </select>
     

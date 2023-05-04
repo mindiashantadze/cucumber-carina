@@ -27,7 +27,8 @@ public class LoginPage extends AbstractPage {
         this.inptPassword.type(password);
     }
 
-    public void submitLoginForm() {
+    public HomePage submitLoginForm() {
         this.btnLogin.click();
+        return new HomePage(driver);
     }
 }

@@ -26,16 +26,4 @@ public class ConnectionFactory {
     public static SqlSessionFactory getSqlSessionFactory() {
         return connectionFactory;
     }
-
-    public static UserMapper getUserMapper() {
-        try(SqlSession sqlSession = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
-            return sqlSession.getMapper(UserMapper.class);
-        }
-    }
-
-    public static ProductMapper getProductMapper() {
-        try(SqlSession sqlSession = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
-            return sqlSession.getMapper(ProductMapper.class);
-        }
-    }
 }

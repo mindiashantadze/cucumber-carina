@@ -23,6 +23,9 @@ public class HomePage extends AbstractPage {
     @FindBy(className = "shopping_cart_badge")
     private ExtendedWebElement lblCartProductCount;
 
+    @FindBy(className = "shopping_cart_link")
+    private ExtendedWebElement btnCartLink;
+
     public HomePage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -40,8 +43,13 @@ public class HomePage extends AbstractPage {
     }
 
     public double getProductsCount() {
-        String productCount = this.lblCartProductCount.getText();
+        final String productCount = this.lblCartProductCount.getText();
         LOGGER.info("Product count: " + productCount);
         return Integer.parseInt(productCount.trim());
+    }
+
+    public CartPage clickCartButton() {
+        this.btnCartLink.click();
+        return new CartPage(driver);
     }
 }
