@@ -1,5 +1,6 @@
 package mshantadze.cucumber.pages;
 
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
@@ -30,6 +31,11 @@ public class HomePage extends AbstractPage {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(lblTitle);
+    }
+
+    @Override
+    public void open() {
+        super.openURL(R.CONFIG.get("url") + "inventory.html");
     }
 
     public void addProductToCart(Product product) {
