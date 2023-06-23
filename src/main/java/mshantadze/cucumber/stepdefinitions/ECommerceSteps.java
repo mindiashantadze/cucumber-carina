@@ -13,6 +13,7 @@ import mshantadze.cucumber.utils.db.dao.ProductsDAO;
 import mshantadze.cucumber.utils.db.dao.UsersDAO;
 import mshantadze.cucumber.utils.db.models.Product;
 import mshantadze.cucumber.utils.db.models.User;
+import org.openqa.selenium.Cookie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -44,9 +45,9 @@ public class ECommerceSteps implements IDriverPool {
         USER = UsersDAO.getUser(username);
         PRODUCTS = ProductsDAO.getProducts(USER.getId());
 
-        loginPage.typeUsername(USER.getUsername());
-        loginPage.typePassword(USER.getPassword());
-        homePage = loginPage.submitLoginForm();
+        loginPage.addCookie(new Cookie("session-username", username));
+        homePage = new HomePage(getDriver());
+        homePage.open();
     }
 
     @And("User adds products to the cart")
